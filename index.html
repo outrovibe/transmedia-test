@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Wrinkle in Time - Transmedia Story</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f3f4;
+    color: #25282b;
+}
+
+/* ---------- GENERAL ---------- */
+
+section {
+    min-height: 100vh;
+    width: 100%;
+}
+
+button,
+a {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- SECTION 1 ---------- */
+
+.intro-section {
+    background: #f5f1eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.intro-content {
+    max-width: 650px;
+}
+
+.intro-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #777;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.intro-content h1 {
+    font-size: 52px;
+    margin: 0 0 15px;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+.intro-content h2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #555;
+    margin: 0 0 30px;
+}
+
+.intro-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 14px;
+}
+
+.player-note {
+    margin: 30px auto;
+    padding: 15px 20px;
+    border-left: 3px solid #555;
+    background: #ebe7e0;
+    text-align: left;
+    font-size: 14px;
+}
+
+.begin-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 13px 30px;
+    background: #25282b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.begin-button:hover {
+    background: #444;
+}
+
+/* ---------- SECTION 2: FEED ---------- */
+
+.feed-section {
+    background: #eef0f1;
+    padding: 30px 20px 60px;
+}
+
+.navbar {
+    height: 60px;
+    background: #202326;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    margin: -30px -20px 30px;
+}
+
+.logo {
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #aaa;
+    font-size: 11px;
+    font-weight: normal;
+    margin-left: 6px;
+}
+
+.feed-layout {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 25px;
+}
+
+.feed-intro {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.feed-intro h2 {
+    margin: 0 0 8px;
+    font-size: 21px;
+}
+
+.feed-intro p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.post {
+    background: white;
+    border: 1px solid #ddd;
+    margin-bottom: 18px;
+    padding: 20px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-picture {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #ddd;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.user-info strong {
+    font-size: 14px;
+}
+
+.user-info small {
+    display: block;
+    color: #777;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.post h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.post p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+}
+
+.post-actions {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.post-actions img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #666;
+    font-size: 13px;
+}
+
+.comment {
+    margin-top: 12px;
+    padding: 10px;
+    background: #f5f5f5;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.comment strong {
+    margin-right: 5px;
+}
+
+.promoted {
+    border-left: 4px solid #555;
+}
+
+.promoted-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.context-button {
+    border: none;
+    background: none;
+    padding: 10px 0 0;
+    color: #555;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.context {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    background: #f0f1f2;
+    border-left: 3px solid #777;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.context.open {
+    display: block;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: fit-content;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.sidebar-section {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 18px;
+}
+
+.sidebar-section p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.removed {
+    color: #8b3030;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.next-area {
+    max-width: 1100px;
+    margin: 25px auto 0;
+    text-align: right;
+}
+
+.next-button {
+    display: inline-block;
+    padding: 13px 20px;
+    background: #25282b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.next-button:hover {
+    background: #444;
+}
+
+/* ---------- SECTION 3 ---------- */
+
+.notification-section {
+    background: #111;
+    height: 100vh;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.notification-section a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.notification-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 800px) {
+
+    .intro-content h1 {
+        font-size: 38px;
+    }
+
+    .feed-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .navbar {
+        padding: 0 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     SECTION 1 - INTRODUCTION
+===================================================== -->
+
+<section class="intro-section">
+
+    <div class="intro-content">
+
+        <div class="intro-label">
+            A Transmedia Adaptation
+        </div>
+
+        <h1>A Wrinkle in Time</h1>
+
+        <h2>A story about identity, memory and control.</h2>
+
+        <p>
+            This is a South African transmedia adaptation of
+            <i>A Wrinkle in Time</i>.
+        </p>
+
+        <p>
+            You will experience the story through social media,
+            messages, digital archives and other online spaces.
+            The story follows Meg as she searches for answers
+            about her missing father and discovers something
+            much bigger than she expected.
+        </p>
+
+        <div class="player-note">
+            <strong>You are playing as Meg.</strong><br>
+            Follow the information you find and decide what
+            to trust as the story unfolds.
+        </div>
+
+        <a href="#feed" class="begin-button">
+            Begin
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 2 - MZANZI CONNECT FEED
+===================================================== -->
+
+<section class="feed-section" id="feed">
+
+    <div class="navbar">
+        <div class="logo">
+            MZANZI CONNECT
+            <span>Digital Platform</span>
+        </div>
+    </div>
+
+    <div class="feed-layout">
+
+        <main>
+
+            <div class="feed-intro">
+
+                <h2>Welcome to Mzanzi Connect</h2>
+
+                <p>
+                    News, education, entertainment and communication
+                    for a connected South Africa.
+                </p>
+
+                <p style="margin-top:10px;">
+                    <strong>System notice:</strong>
+                    Some information may have been removed,
+                    restricted or classified by IT.
+                </p>
+
+            </div>
+
+
+            <!-- MEG'S POST -->
+
+            <article class="post">
+
+                <div class="post-header">
+
+                    <img
+                        src="placeholder.png"
+                        class="profile-picture"
+                        alt="Meg's profile"
+                    >
+
+                    <div class="user-info">
+
+                        <strong>Meg Murry</strong>
+
+                        <small>
+                            Johannesburg · 2 hours ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <h3>Dad.</h3>
+
+                <p>
+                    Today marks another year since you disappeared.
+                </p>
+
+                <p>
+                    Everyone keeps telling me that I should stop
+                    looking for answers. That you're gone.
+                    That I should accept it.
+                </p>
+
+                <p>
+                    But I don't believe them.
+                </p>
+
+                <p>
+                    I still remember you telling me that sometimes
+                    the things we're looking for are hidden somewhere
+                    we aren't supposed to look.
+                </p>
+
+                <p>
+                    I don't know what that means yet.
+                </p>
+
+                <p>
+                    I just know I'm not giving up.
+                </p>
+
+                <p>
+                    <strong>4 years since Dr. Murry disappeared.</strong>
+                </p>
+
+                <img
+                    src="placeholder.png"
+                    class="post-image"
+                    alt="Image attached to Meg's post"
+                >
+
+                <div class="post-actions">
+
+                    <div class="action">
+                        <img src="heart-icon.png" alt="Like">
+                        Like
+                    </div>
+
+                    <div class="action">
+                        <img src="comment-icon.png" alt="Comment">
+                        Comment
+                    </div>
+
+                </div>
+
+                <div class="comment">
+                    <strong>Chloe_99:</strong>
+                    Meg, I'm really sorry. I hope you find the answers
+                    you're looking for.
+                </div>
+
+                <div class="comment">
+                    <strong>Thabo_M:</strong>
+                    I remember your dad. He was working on something
+                    important before he disappeared.
+                </div>
+
+                <div class="comment">
+                    <strong>IT_Official:</strong>
+                    Please avoid sharing unverified information regarding
+                    government projects.
+                </div>
+
+            </article>
+
+
+            <!-- PROMOTED POST -->
+
+            <article class="post promoted">
+
+                <div class="promoted-label">
+                    PROMOTED
+                </div>
+
+                <div class="post-header">
+
+                    <img
+                        src="placeholder.png"
+                        class="profile-picture"
+                        alt="Mzanzi Connect"
+                    >
+
+                    <div class="user-info">
+
+                        <strong>Mzanzi Connect</strong>
+
+                        <small>
+                            Sponsored · IT Verified
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Exciting news! The National Curriculum Review
+                    confirms English and Afrikaans remain the primary
+                    languages of instruction.
+                    "A unified approach ensures equal opportunity
+                    for all learners." 🎓
+                    #MzanziLearns #OneStandard
+                </p>
+
+                <button
+                    class="context-button"
+                    onclick="toggleContext('context1', this)">
+                    ▸ View context
+                </button>
+
+                <div class="context" id="context1">
+                    CONTEXT: This post was promoted by Mzanzi Connect
+                    and placed near the top of the feed. It received
+                    more visibility than most regular posts. Posts
+                    approved by IT are given more space across the
+                    platform. The Drive contains records of similar
+                    promoted posts.
+                </div>
+
+            </article>
+
+
+            <!-- FLAGGED POST 1 -->
+
+            <article class="post">
+
+                <div class="post-header">
+
+                    <img
+                        src="placeholder.png"
+                        class="profile-picture"
+                        alt="User profile"
+                    >
+
+                    <div class="user-info">
+
+                        <strong>@roots_remember</strong>
+
+                        <small>
+                            Johannesburg · 18 min ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    My grandmother's stories are not "unverified
+                    cultural content." They are history and knowledge.
+                    Who gave Mzanzi the right to decide what counts?
+                    #RememberOurOwn
+                </p>
+
+                <div class="post-actions">
+
+                    <div class="action">
+                        ❤️ 3
+                    </div>
+
+                    <div class="action">
+                        💬 0
+                    </div>
+
+                </div>
+
+                <button
+                    class="context-button"
+                    onclick="toggleContext('context2', this)">
+                    ▸ View context
+                </button>
+
+                <div class="context" id="context2">
+                    CONTEXT: This post was flagged within 20 minutes
+                    of posting. Engagement was suppressed (only 3
+                    likes visible). The hashtag #RememberOurOwn was
+                    removed from trending. Compare with the "promoted"
+                    post above. The Drive contains records of dozens
+                    of similar removals.
+                </div>
+
+            </article>
+
+
+            <!-- FLAGGED POST 2 -->
+
+            <article class="post">
+
+                <div class="post-header">
+
+                    <img
+                        src="placeholder.png"
+                        class="profile-picture"
+                        alt="User profile"
+                    >
+
+                    <div class="user-info">
+
+                        <strong>Sihle_N</strong>
+
+                        <small>
+                            Soweto · 42 min ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Why are some of our languages missing from the
+                    education section? My little sister searched for
+                    information in isiXhosa and almost everything she
+                    found was in English. If our languages are part of
+                    our history, why are they so difficult to find?
+                </p>
+
+                <div class="post-actions">
+
+                    <div class="action">
+                        ❤️ 7
+                    </div>
+
+                    <div class="action">
+                        💬 2
+                    </div>
+
+                </div>
+
+                <button
+                    class="context-button"
+                    onclick="toggleContext('context3', this)">
+                    ▸ View context
+                </button>
+
+                <div class="context" id="context3">
+                    CONTEXT: This post was flagged for potentially
+                    misleading educational information. The original
+                    post had 19 likes before its visibility was reduced.
+                    Related search terms were also restricted. The Drive
+                    contains records of similar changes involving African
+                    languages and cultural information.
+                </div>
+
+            </article>
+
+        </main>
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h3>Content Removed From Mzanzi</h3>
+
+            <div class="sidebar-section">
+
+                <strong>Who Were We Before?</strong>
+
+                <p>
+                    This article explored the relationship between
+                    African identity, ancestry and cultural memory.
+                </p>
+
+                <div class="removed">
+                    REMOVED BY IT
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>System Activity</h3>
+
+                <ul>
+                    <li>Posts flagged today: 3</li>
+                    <li>Search results restricted: 7</li>
+                    <li>Trending hashtags removed: 1</li>
+                    <li>Platform status: Online</li>
+                </ul>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <h3>Trending</h3>
+
+                <ul>
+                    <li>#FutureOfSouthAfrica</li>
+                    <li>#TechForEveryone</li>
+                    <li>#RememberOurOwn — Removed</li>
+                </ul>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <div class="next-area">
+
+        <a href="#notification" class="next-button">
+            Continue →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 3 - PHONE NOTIFICATION
+===================================================== -->
+
+<section class="notification-section" id="notification">
+
+    <a href="page2.html">
+
+        <img
+            src="phone-notification.png"
+            alt="Phone notification from W"
+        >
+
+    </a>
+
+</section>
+
+
+<script>
+
+function toggleContext(id, button) {
+
+    const context = document.getElementById(id);
+
+    if (context.classList.contains("open")) {
+
+        context.classList.remove("open");
+        button.textContent = "▸ View context";
+
+    } else {
+
+        context.classList.add("open");
+        button.textContent = "▾ Hide context";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

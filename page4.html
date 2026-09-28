@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Drive - Evidence Archive</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f3f4;
+    color: #25282b;
+}
+
+section {
+    min-height: 100vh;
+}
+
+/* =====================================================
+   SECTION 1 - ARCHIVE
+===================================================== */
+
+.archive-section {
+    background: #17191b;
+    color: white;
+    padding: 50px 20px 70px;
+}
+
+.archive-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.archive-header {
+    border-bottom: 1px solid #444;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+}
+
+.archive-header small {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.archive-header h1 {
+    font-size: 38px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.archive-header p {
+    color: #aaa;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.folder {
+    background: #222527;
+    border: 1px solid #3b3e40;
+    padding: 25px 20px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.folder:hover {
+    background: #2c2f31;
+}
+
+.folder-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.folder h3 {
+    font-size: 15px;
+    margin: 0 0 7px;
+}
+
+.folder p {
+    color: #999;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.folder.father {
+    border-color: #aaa;
+}
+
+.archive-next {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.next-button {
+    display: inline-block;
+    padding: 12px 22px;
+    background: white;
+    color: #17191b;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.next-button:hover {
+    background: #ccc;
+}
+
+
+/* =====================================================
+   POPUP
+===================================================== */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background: #f5f5f5;
+    color: #25282b;
+    width: 100%;
+    max-width: 550px;
+    padding: 30px;
+    position: relative;
+}
+
+.popup-box h2 {
+    margin-top: 0;
+    font-weight: normal;
+}
+
+.popup-box p {
+    line-height: 1.6;
+    font-size: 14px;
+    color: #555;
+}
+
+.close-button {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.popup-tag {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+
+/* =====================================================
+   FATHER SLIDESHOW
+===================================================== */
+
+.slideshow-box {
+    width: 95%;
+    max-width: 950px;
+    height: 90vh;
+    background: #111;
+    color: white;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.slideshow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.slideshow-header h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.slide-counter {
+    color: #888;
+    font-size: 12px;
+}
+
+.slide-image-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #050505;
+    cursor: pointer;
+}
+
+.slide-image-area img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.slide-instruction {
+    text-align: center;
+    padding: 12px;
+    color: #888;
+    font-size: 11px;
+}
+
+.close-slide {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   SECTION 2 - MEG'S STORY
+===================================================== */
+
+.story-section {
+    background: #f5f1eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 25px;
+}
+
+.story-container {
+    max-width: 700px;
+}
+
+.story-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.story-container h1 {
+    font-size: 34px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.story-container p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #3f4143;
+}
+
+.story-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 22px;
+    background: #25282b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   SECTION 3 - CHAT
+===================================================== */
+
+.chat-section {
+    background: #eef0f1;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    border: 1px solid #d5d5d5;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.chat-header strong {
+    font-size: 15px;
+}
+
+.chat-header small {
+    display: block;
+    color: #777;
+    margin-top: 4px;
+}
+
+.chat-messages {
+    padding: 25px;
+    flex: 1;
+}
+
+.message {
+    max-width: 75%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.w {
+    background: #e5e7e8;
+}
+
+.meg {
+    background: #25282b;
+    color: white;
+    margin-left: auto;
+}
+
+.chat-controls {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.chat-button {
+    border: none;
+    background: #25282b;
+    color: white;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.chat-button:disabled {
+    background: #aaa;
+}
+
+.chat-note {
+    font-size: 11px;
+    color: #777;
+    margin-top: 8px;
+}
+
+@media (max-width: 750px) {
+
+    .folder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .folder {
+        padding: 20px;
+    }
+
+    .slideshow-box {
+        height: 80vh;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     SECTION 1 - THE DRIVE ARCHIVE
+===================================================== -->
+
+<section class="archive-section">
+
+    <div class="archive-container">
+
+        <div class="archive-header">
+
+            <small>RECOVERED ARCHIVE</small>
+
+            <h1>The Drive</h1>
+
+            <p>
+                Files recovered from outside the Mzanzi Connect
+                system. Some information appears to have been
+                removed from public records.
+            </p>
+
+        </div>
+
+
+        <div class="folder-grid">
+
+
+            <!-- PHOTOGRAPHS -->
+
+            <div class="folder" onclick="openPopup('photos')">
+
+                <div class="folder-icon">📁</div>
+
+                <h3>PHOTOGRAPHS</h3>
+
+                <p>
+                    Personal and community photographs.
+                </p>
+
+            </div>
+
+
+            <!-- MUSIC -->
+
+            <div class="folder" onclick="openPopup('music')">
+
+                <div class="folder-icon">📁</div>
+
+                <h3>MUSIC</h3>
+
+                <p>
+                    Removed recordings and music archives.
+                </p>
+
+            </div>
+
+
+            <!-- HISTORY -->
+
+            <div class="folder" onclick="openPopup('history')">
+
+                <div class="folder-icon">📁</div>
+
+                <h3>HISTORY</h3>
+
+                <p>
+                    Records of events and forgotten histories.
+                </p>
+
+            </div>
+
+
+            <!-- ANCESTRY -->
+
+            <div class="folder" onclick="openPopup('ancestry')">
+
+                <div class="folder-icon">📁</div>
+
+                <h3>ANCESTRY</h3>
+
+                <p>
+                    Family histories and community records.
+                </p>
+
+            </div>
+
+
+            <!-- KNOWLEDGE -->
+
+            <div class="folder" onclick="openPopup('knowledge')">
+
+                <div class="folder-icon">📁</div>
+
+                <h3>KNOWLEDGE</h3>
+
+                <p>
+                    Indigenous knowledge and research.
+                </p>
+
+            </div>
+
+
+            <!-- LANGUAGE -->
+
+            <div class="folder" onclick="openPopup('language')">
+
+                <div class="folder-icon">📁</div>
+
+                <h3>LANGUAGE</h3>
+
+                <p>
+                    Language records removed from education.
+                </p>
+
+            </div>
+
+
+            <!-- FATHER -->
+
+            <div
+                class="folder father"
+                onclick="openFatherArchive()"
+            >
+
+                <div class="folder-icon">📁</div>
+
+                <h3>MR. MURRY</h3>
+
+                <p>
+                    Personal research and documents belonging
+                    to Dr. Murry.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="archive-next">
+
+            <a href="#story" class="next-button">
+                Continue
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     POPUPS
+===================================================== -->
+
+<div class="popup" id="photos">
+
+    <div class="popup-box">
+
+        <button
+            class="close-button"
+            onclick="closePopup('photos')">
+            ×
+        </button>
+
+        <div class="popup-tag">ARCHIVE FOLDER</div>
+
+        <h2>Photographs</h2>
+
+        <p>
+            A collection of photographs documenting families,
+            communities, places and cultural events. Several
+            photographs were removed from public archives after
+            being classified as unnecessary or outdated.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="popup" id="music">
+
+    <div class="popup-box">
+
+        <button
+            class="close-button"
+            onclick="closePopup('music')">
+            ×
+        </button>
+
+        <div class="popup-tag">ARCHIVE FOLDER</div>
+
+        <h2>Music</h2>
+
+        <p>
+            Catalogue for a collection of traditional songs
+            recorded by community musicians before the recordings
+            were removed from Mzanzi's music library by IT.
+            The catalogue lists song titles, performers, and
+            the communities they belong to.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="popup" id="history">
+
+    <div class="popup-box">
+
+        <button
+            class="close-button"
+            onclick="closePopup('history')">
+            ×
+        </button>
+
+        <div class="popup-tag">ARCHIVE FOLDER</div>
+
+        <h2>History</h2>
+
+        <p>
+            Records of local events, community histories and
+            historical accounts that became difficult to find
+            through the Mzanzi Connect search system.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="popup" id="ancestry">
+
+    <div class="popup-box">
+
+        <button
+            class="close-button"
+            onclick="closePopup('ancestry')">
+            ×
+        </button>
+
+        <div class="popup-tag">ARCHIVE FOLDER</div>
+
+        <h2>Ancestry</h2>
+
+        <p>
+            Family trees, oral histories and records showing
+            connections between families and communities.
+            Some records were removed because they could not
+            be verified by the official system.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="popup" id="knowledge">
+
+    <div class="popup-box">
+
+        <button
+            class="close-button"
+            onclick="closePopup('knowledge')">
+            ×
+        </button>
+
+        <div class="popup-tag">ARCHIVE FOLDER</div>
+
+        <h2>Knowledge</h2>
+
+        <p>
+            Notes and records of indigenous knowledge passed
+            between generations. The archive contains information
+            about plants, practices, local environments and
+            community knowledge.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="popup" id="language">
+
+    <div class="popup-box">
+
+        <button
+            class="close-button"
+            onclick="closePopup('language')">
+            ×
+        </button>
+
+        <div class="popup-tag">ARCHIVE FOLDER</div>
+
+        <h2>Language</h2>
+
+        <p>
+            Documents containing language records, translations,
+            oral histories and educational material in African
+            languages. Some of these materials became difficult
+            to access through Mzanzi Connect.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FATHER'S ARCHIVE SLIDESHOW
+===================================================== -->
+
+<div class="popup" id="fatherArchive">
+
+    <div class="slideshow-box">
+
+        <div class="slideshow-header">
+
+            <h2>MR. MURRY — RECOVERED DOCUMENTS</h2>
+
+            <div>
+
+                <span
+                    class="slide-counter"
+                    id="slideCounter">
+                    1 / 4
+                </span>
+
+                <button
+                    class="close-slide"
+                    onclick="closeFatherArchive()">
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="slide-image-area"
+            onclick="nextSlide()"
+        >
+
+            <img
+                id="fatherImage"
+                src="research-paper.png"
+                alt="Recovered document"
+            >
+
+        </div>
+
+
+        <div class="slide-instruction">
+            Click the document to continue.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SECTION 2 - MEG'S DISCOVERY
+===================================================== -->
+
+<section class="story-section" id="story">
+
+    <div class="story-container">
+
+        <div class="story-label">
+            MEG'S NOTES
+        </div>
+
+        <h1>What I found</h1>
+
+        <p>
+            I think I finally understand what Dad was trying
+            to show me.
+        </p>
+
+        <p>
+            Mzanzi Connect is not just a social media platform.
+            IT controls what people can find on it. They decide
+            which stories are promoted, which information is
+            difficult to find and which things disappear.
+        </p>
+
+        <p>
+            They remove languages, songs, stories and photographs.
+            They make some parts of our history harder to see until
+            people stop looking for them.
+        </p>
+
+        <p>
+            And Charles is inside it too.
+        </p>
+
+        <p>
+            They have made him believe that the information they
+            give him is the only information that matters.
+        </p>
+
+        <p>
+            Dad found out what they were doing. He tried to expose
+            them, but IT found him first.
+        </p>
+
+        <p>
+            They captured him and forced him to help maintain the
+            system. They used his scientific knowledge to make it
+            stronger.
+        </p>
+
+        <p>
+            I can't fix everything they have done. Dad already tried.
+            But I can try to save Charles from them.
+        </p>
+
+        <p>
+            I also need to get Dad back.
+        </p>
+
+        <p>
+            I don't know how to do that yet.
+        </p>
+
+        <p>
+            I need to ask W.
+        </p>
+
+        <a href="#chat" class="story-button">
+            Message W
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 3 - CHAT WITH W
+===================================================== -->
+
+<section class="chat-section" id="chat">
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+
+            <strong>W</strong>
+
+            <small>
+                Encrypted connection
+            </small>
+
+        </div>
+
+
+        <div
+            class="chat-messages"
+            id="chatMessages">
+        </div>
+
+
+        <div class="chat-controls">
+
+            <button
+                class="chat-button"
+                id="chatButton"
+                onclick="nextChatMessage()">
+                Next message
+            </button>
+
+            <div class="chat-note" id="chatNote">
+                Press next message to continue.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   FOLDER POPUPS
+===================================================== */
+
+function openPopup(id) {
+
+    document.getElementById(id).style.display = "flex";
+
+}
+
+function closePopup(id) {
+
+    document.getElementById(id).style.display = "none";
+
+}
+
+
+/* =====================================================
+   FATHER'S SLIDESHOW
+===================================================== */
+
+const fatherSlides = [
+
+    "research-paper.png",
+    "photograph-1.png",
+    "encrypted-file.png",
+    "meeting-transcript.png"
+
+];
+
+let currentSlide = 0;
+
+function openFatherArchive() {
+
+    currentSlide = 0;
+
+    document.getElementById("fatherArchive").style.display = "flex";
+
+    updateSlide();
+
+}
+
+function closeFatherArchive() {
+
+    document.getElementById("fatherArchive").style.display = "none";
+
+}
+
+function nextSlide() {
+
+    if (currentSlide < fatherSlides.length - 1) {
+
+        currentSlide++;
+
+        updateSlide();
+
+    } else {
+
+        closeFatherArchive();
+
+        alert(
+            "You have reached the end of your father's recovered archive."
+        );
+
+    }
+
+}
+
+function updateSlide() {
+
+    document.getElementById("fatherImage").src =
+        fatherSlides[currentSlide];
+
+    document.getElementById("slideCounter").textContent =
+        (currentSlide + 1) +
+        " / " +
+        fatherSlides.length;
+
+}
+
+
+/* =====================================================
+   W CHAT
+===================================================== */
+
+const chatMessages = [
+
+    {
+        type: "meg",
+        text: "W, I found Dad's documents. I know what IT did to him."
+    },
+
+    {
+        type: "w",
+        text: "Then you know why they wanted his work."
+    },
+
+    {
+        type: "meg",
+        text: "How do I save him?"
+    },
+
+    {
+        type: "w",
+        text: "You do not save him by becoming stronger than everyone around you."
+    },
+
+    {
+        type: "w",
+        text: "You save him by becoming stronger than IT."
+    },
+
+    {
+        type: "meg",
+        text: "How?"
+    },
+
+    {
+        type: "w",
+        text: "They separated him from the people, memories and history that gave his life meaning."
+    },
+
+    {
+        type: "w",
+        text: "You need to reconnect him to those things."
+    },
+
+    {
+        type: "meg",
+        text: "But I don't know where he is."
+    },
+
+    {
+        type: "w",
+        text: "Go back to his archive."
+    },
+
+    {
+        type: "w",
+        text: "One of the documents contains a phone number."
+    },
+
+    {
+        type: "w",
+        text: "Call him."
+    },
+
+    {
+        type: "meg",
+        text: "And then?"
+    },
+
+    {
+        type: "w",
+        text: "Remind him who he is."
+    }
+
+];
+
+let chatIndex = 0;
+
+function nextChatMessage() {
+
+    if (chatIndex >= chatMessages.length) {
+
+        document.getElementById("chatButton").disabled = true;
+
+        document.getElementById("chatNote").textContent =
+            "The number is waiting in your father's archive.";
+
+        return;
+
+    }
+
+    const data = chatMessages[chatIndex];
+
+    const message = document.createElement("div");
+
+    message.className =
+        "message " + data.type;
+
+    message.textContent = data.text;
+
+    document
+        .getElementById("chatMessages")
+        .appendChild(message);
+
+    chatIndex++;
+
+    if (chatIndex >= chatMessages.length) {
+
+        document.getElementById("chatButton").disabled = true;
+
+        document.getElementById("chatNote").textContent =
+            "The number is waiting in your father's archive.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

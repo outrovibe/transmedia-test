@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Messages - Mzanzi Connect</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef0f1;
+    color: #25282b;
+}
+
+/* ---------- NAV ---------- */
+
+.navbar {
+    height: 60px;
+    background: #202326;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #aaa;
+    font-size: 11px;
+    font-weight: normal;
+    margin-left: 6px;
+}
+
+/* ---------- CHAT ---------- */
+
+.page {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    border: 1px solid #d8d8d8;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.profile {
+    width: 42px;
+    height: 42px;
+    background: #ddd;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.chat-header strong {
+    font-size: 15px;
+}
+
+.chat-header small {
+    display: block;
+    color: #777;
+    margin-top: 3px;
+}
+
+.messages {
+    padding: 25px;
+    flex: 1;
+}
+
+.message {
+    max-width: 75%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.w-message {
+    background: #e5e7e8;
+    margin-right: auto;
+}
+
+.meg-message {
+    background: #25282b;
+    color: white;
+    margin-left: auto;
+}
+
+.message-name {
+    font-size: 10px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.meg-message .message-name {
+    color: #ccc;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ---------- DRIVE FILE ---------- */
+
+.drive-file {
+    display: none;
+    text-decoration: none;
+    color: #25282b;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    padding: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.drive-file:hover {
+    background: #e8e8e8;
+}
+
+.drive-icon {
+    font-size: 28px;
+    margin-right: 12px;
+}
+
+.drive-file-content {
+    display: flex;
+    align-items: center;
+}
+
+.drive-file small {
+    display: block;
+    color: #777;
+    margin-top: 3px;
+}
+
+/* ---------- CONTROLS ---------- */
+
+.controls {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.next-button {
+    border: none;
+    background: #25282b;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.next-button:hover {
+    background: #444;
+}
+
+.next-button:disabled {
+    background: #aaa;
+    cursor: default;
+}
+
+.instruction {
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+
+    .message {
+        max-width: 85%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        MZANZI CONNECT
+        <span>Messages</span>
+    </div>
+
+</div>
+
+
+<div class="page">
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+
+            <div class="profile"></div>
+
+            <div>
+                <strong>Unknown Contact</strong>
+                <small>W</small>
+            </div>
+
+        </div>
+
+
+        <div class="messages" id="messages">
+
+            <!-- Messages appear here -->
+
+        </div>
+
+
+        <div class="controls">
+
+            <button
+                class="next-button"
+                id="nextButton"
+                onclick="nextMessage()">
+                Next message
+            </button>
+
+            <div class="instruction" id="instruction">
+                Press next message to continue.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const messages = [
+
+    {
+        sender: "W",
+        type: "w-message",
+        text: "Meg?"
+    },
+
+    {
+        sender: "Meg",
+        type: "meg-message",
+        text: "Who is this?"
+    },
+
+    {
+        sender: "W",
+        type: "w-message",
+        text: "Someone who remembers your father."
+    },
+
+    {
+        sender: "Meg",
+        type: "meg-message",
+        text: "How do you know my dad?"
+    },
+
+    {
+        sender: "W",
+        type: "w-message",
+        text: "Because I know what happened to him. You have been looking in the wrong places."
+    },
+
+    {
+        sender: "Meg",
+        type: "meg-message",
+        text: "Then tell me where to look."
+    },
+
+    {
+        sender: "W",
+        type: "w-message",
+        text: "Look at what Mzanzi Connect does not want you to see."
+    },
+
+    {
+        sender: "W",
+        type: "w-message",
+        text: "I have something for you. Your father left it behind."
+    },
+
+    {
+        sender: "W",
+        type: "w-message",
+        text: "Do not open it through Mzanzi Connect. It is outside their system."
+    }
+
+];
+
+let currentMessage = 0;
+
+function nextMessage() {
+
+    if (currentMessage >= messages.length) {
+        return;
+    }
+
+    const messageData = messages[currentMessage];
+
+    const message = document.createElement("div");
+
+    message.className =
+        "message " + messageData.type;
+
+    message.innerHTML =
+        '<div class="message-name">' +
+        messageData.sender +
+        '</div>' +
+        messageData.text;
+
+    document.getElementById("messages").appendChild(message);
+
+    currentMessage++;
+
+    if (currentMessage === messages.length) {
+
+        showDrive();
+
+        document.getElementById("nextButton").disabled = true;
+
+        document.getElementById("instruction").textContent =
+            "W has sent you a file. Click it to continue.";
+
+    }
+
+}
+
+function showDrive() {
+
+    const file = document.createElement("a");
+
+    file.href = "page3.html";
+
+    file.className = "drive-file";
+
+    file.style.display = "block";
+
+    file.innerHTML = `
+        <div class="drive-file-content">
+
+            <div class="drive-icon">
+                📁
+            </div>
+
+            <div>
+                <strong>THE_DRIVE</strong>
+                <small>Encrypted archive · 1 file</small>
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById("messages").appendChild(file);
+
+}
+
+</script>
+
+</body>
+</html>

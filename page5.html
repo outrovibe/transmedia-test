@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Wrinkle in Time - Final Transmission</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f3f4;
+    color: #25282b;
+}
+
+section {
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   SECTION 1 - FULL IMAGE
+===================================================== */
+
+.final-image-section {
+    background: #111;
+    position: relative;
+}
+
+.final-image-section img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =====================================================
+   SECTION 2 - PHONE + TRANSCRIPT
+===================================================== */
+
+.call-section {
+    background: #f5f1eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 30px;
+}
+
+.call-container {
+    max-width: 1000px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.phone-area {
+    text-align: center;
+}
+
+.phone-area img {
+    width: 100%;
+    max-width: 350px;
+    max-height: 650px;
+    object-fit: contain;
+}
+
+.transcript {
+    background: white;
+    border: 1px solid #d8d8d8;
+    padding: 30px;
+}
+
+.transcript-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.transcript h1 {
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0 0 25px;
+}
+
+.call-time {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.transcript-line {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.speaker {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.meg-speaker {
+    color: #555;
+}
+
+.dad-speaker {
+    color: #777;
+}
+
+
+/* =====================================================
+   SECTION 3 - VIDEO
+===================================================== */
+
+.video-section {
+    background: #202326;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+}
+
+.video-container h1 {
+    font-size: 30px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.video-container p {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.story-video {
+    width: 100%;
+    max-height: 650px;
+    background: #000;
+    display: block;
+}
+
+
+/* =====================================================
+   SECTION 4 - BACK TO START
+===================================================== */
+
+.end-section {
+    min-height: 50vh;
+    background: #f5f1eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.end-content {
+    max-width: 550px;
+}
+
+.end-content h1 {
+    font-size: 34px;
+    font-weight: normal;
+}
+
+.end-content p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.start-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 25px;
+    background: #25282b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.start-button:hover {
+    background: #444;
+}
+
+
+@media (max-width: 800px) {
+
+    .call-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .phone-area img {
+        max-height: 500px;
+    }
+
+    .transcript {
+        padding: 20px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     SECTION 1 - FULL SCREEN IMAGE
+===================================================== -->
+
+<section class="final-image-section">
+
+    <img
+        src="final-image.png"
+        alt="Final story image"
+    >
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 2 - PHONE CALL
+===================================================== -->
+
+<section class="call-section">
+
+    <div class="call-container">
+
+
+        <!-- PHONE -->
+
+        <div class="phone-area">
+
+            <img
+                src="phone.png"
+                alt="Meg's phone during the call"
+            >
+
+        </div>
+
+
+        <!-- TRANSCRIPT -->
+
+        <div class="transcript">
+
+            <div class="transcript-label">
+                RECOVERED CALL TRANSCRIPT
+            </div>
+
+            <h1>Meg calls Dad</h1>
+
+            <div class="call-time">
+                Unknown location · Encrypted connection
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker meg-speaker">
+                    MEG
+                </div>
+
+                Dad?
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker dad-speaker">
+                    DAD
+                </div>
+
+                Meg?
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker meg-speaker">
+                    MEG
+                </div>
+
+                It's me.
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker dad-speaker">
+                    DAD
+                </div>
+
+                How did you find this number?
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker meg-speaker">
+                    MEG
+                </div>
+
+                I found your files. I know what IT has been doing.
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker dad-speaker">
+                    DAD
+                </div>
+
+                Meg, you shouldn't have found those files.
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker meg-speaker">
+                    MEG
+                </div>
+
+                I'm not going to leave you here.
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker dad-speaker">
+                    DAD
+                </div>
+
+                You don't understand what they can do.
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker meg-speaker">
+                    MEG
+                </div>
+
+                Maybe I don't. But I know who you are, Dad.
+                And I'm going to help you remember.
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker dad-speaker">
+                    DAD
+                </div>
+
+                Meg...
+
+            </div>
+
+
+            <div class="transcript-line">
+
+                <div class="speaker meg-speaker">
+                    MEG
+                </div>
+
+                I'm coming for you.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 3 - FINAL VIDEO
+===================================================== -->
+
+<section class="video-section">
+
+    <div class="video-container">
+
+        <h1>The Story Continues</h1>
+
+        <p>
+            Watch the final video to see what happens next.
+        </p>
+
+        <video
+            class="story-video"
+            controls
+            preload="metadata">
+
+            <source
+                src="final-video.mp4"
+                type="video/mp4">
+
+            Your browser does not support video playback.
+
+        </video>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECTION 4 - BACK TO START
+===================================================== -->
+
+<section class="end-section">
+
+    <div class="end-content">
+
+        <h1>End of transmission.</h1>
+
+        <p>
+            Meg has found the truth about the system,
+            discovered what happened to her father and
+            decided to fight back.
+        </p>
+
+        <p>
+            The story does not end here.
+        </p>
+
+        <a
+            href="index.html"
+            class="start-button">
+            Back to start
+        </a>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>
